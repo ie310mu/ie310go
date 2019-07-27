@@ -1,0 +1,16 @@
+{
+    "DataBase": {
+        "enable": true,
+        "driver": "mysql",
+        "dsn": "zkb:password@tcp(127.0.0.1:3307)/zkb?charset=utf8&parseTime=True&loc=Asia%2FShanghai",
+        "show_sql": true,
+        "max_open_conns": 20
+    },
+    "DataBaseRO": {
+        "enable": true,
+        "driver": "mysql",
+        "dsn": "zkbro:password@tcp(127.0.0.1:3307)/zkb?charset=utf8&parseTime=True&loc=Asia%2FShanghai",
+        "show_sql": true,
+        "max_open_conns": 20
+    }
+}

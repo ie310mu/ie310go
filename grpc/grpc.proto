@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service Ie310GoServcie {
+  rpc Invoke(GrpcRequest) returns (GrpcResponse) {}
+}
+
+message GrpcRequest{
+  string data = 1;
+}
+
+message GrpcResponse{
+  string data = 1;
+}

@@ -1,0 +1,37 @@
+# ie310go
+
+
+ie310go是一个用于开发json api的go框架
+支持4种协议：http、tcp、ipc(进程间通信，支持windows+linux)、ws(WebSocket)，目前暂不支持https、wss
+4种协议都支持发布、订阅模式
+
+ie310go在多个框架的基础上扩展而来：
+    *****beego：https://github.com/astaxie/beego   
+            使用了cache、logs、session3个模块，使用说明可参考beego
+    *****go-ethereum：https://github.com/ethereum/go-ethereum
+            tcp、ipc、ws的底层协议支持，使用了geth的rpc模块             
+    
+ie310go有哪些特点？
+           1.若用于web开发，由于不包含静态文件的渲染功能，需要使用动静分离的技术，出口层需要另外用nginx反向代理将go api、静态html封装成一个出口
+           2.实现了简单的config模块，使用json作为配置文件格式
+           3.ie310go中使用类似于java mybatis的轻量级框架，自定义了db模块。
+              （mybatis需要开发人员手写sql语句，虽然比较繁琐，但当在多种开发语言中切换，手写sql反而是一种比较通用的方法，降低学习成本）
+               (目前db模块仅支持mysql数据库)
+               (常见的orm框架，是根据Model自动创建数据表，ie310go的db模块是根据数据表自动创建Model、Mapper)
+            4.实现了简单的性能监控模块，功能待补充
+            5.若用于web开发，ie310go自定义route模块，要求所有api的访问方式都是：
+               http://host/xxxxService.xxx?m=xxx&par1=xxx&par2=xxx
+            6.总之，ie310go在很多方面进行了强规则约束，放弃了灵活性，带来一致性，这与go语言本身的特性类似
+               
+
+ie310go中的模块有：
+   config、db、monitor、route           cache、logs、session(从beego复制而来)
+
+与ie310go配套的，还有一个代码生成工具ie310go_codemaker，用于按数据库表生成db模块需要的Model、Mapper，route模块需要的Service
+    ie310go_codemaker使用c#开发，目前只能在windows系统中使用
+    https://github.com/ie310mu/ie310go_codemaker
+
+
+获取源码：
+go get github.com/ie310mu/ie310go
+

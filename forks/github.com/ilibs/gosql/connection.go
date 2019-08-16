@@ -3,6 +3,7 @@ package gosql
 import (
 	"errors"
 	"strings"
+	"time"
 
 	"github.com/ie310mu/ie310go/common/logsagent"
 	"github.com/ie310mu/ie310go/forks/github.com/jmoiron/sqlx"
@@ -65,8 +66,9 @@ func Connect(configs map[string]*Config) (err error) {
 			logger.SetLogging(true)
 		}
 
-		sess.SetMaxOpenConns(conf.MaxOpenConns)
-		sess.SetMaxIdleConns(conf.MaxIdleConns)
+		sess.SetMaxOpenConns(conf.MaxOpenConns)                                //最大打开的连接数
+		sess.SetMaxIdleConns(conf.MaxIdleConns)                                //最大闲置连接数
+		sess.SetConnMaxLifetime(time.Duration(conf.MaxLifetime) * time.Second) //最大闲置时间，单位s，一般设置为mysql waittime的一半
 
 		if db, ok := dbService[key]; ok {
 			dbService[key] = sess

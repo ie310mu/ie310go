@@ -26,12 +26,12 @@ var defaultServeThriftConfig = ServerThriftConfig{Port: "8043"}
 
 //NewServerThriftDefault ..
 func NewServerThriftDefault() *ServerThrift {
-	return &ServerThrift{services: make(map[string]IService), config: defaultServeThriftConfig, name: "defaultThriftServer"}
+	return &ServerThrift{services: make(map[string]IService), config: defaultServeThriftConfig, name: "defaultThriftServer", stopch: make(chan bool)}
 }
 
 //NewServerThrift ..
 func NewServerThrift(cfg ServerThriftConfig, n string) *ServerThrift {
-	return &ServerThrift{services: make(map[string]IService), config: cfg, name: n}
+	return &ServerThrift{services: make(map[string]IService), config: cfg, name: n, stopch: make(chan bool)}
 }
 
 //ServerThrift ..
@@ -61,7 +61,9 @@ func (s *ServerThrift) Run() {
 			logsagent.Error("server " + s.Name() + " run error： ")
 			logsagent.Error(err)
 			atomic.StoreInt32(&s.run, 0)
-			s.stopch <- false
+			logsagent.Info("server " + s.Name() + " set stopch to true")
+			s.stopch <- true
+			close(s.stopch)
 		}
 	}()
 
@@ -71,7 +73,7 @@ func (s *ServerThrift) Run() {
 	s.thriftserver = s.newThriftServer()
 	defer s.thriftserver.Stop()
 
-	var c chan int
+	var c chan int = make(chan int)
 	go s.startListen(c)
 	<-c
 }
@@ -160,7 +162,9 @@ func (h *thriftHandler) getService(key string) IService {
 func (s *ServerThrift) Stop() {
 	if atomic.CompareAndSwapInt32(&s.run, 1, 0) {
 		s.thriftserver.Stop()
-		s.stopch <- false
+		logsagent.Info("server " + s.Name() + " set stopch to true")
+		s.stopch <- true
+		close(s.stopch)
 	}
 }
 

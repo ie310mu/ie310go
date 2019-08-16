@@ -2,6 +2,7 @@ package route
 
 import (
 	"sync"
+	"time"
 
 	"github.com/ie310mu/ie310go/common/logsagent"
 )
@@ -63,14 +64,19 @@ func run(srv Server, wg *sync.WaitGroup) {
 		srv.Run()
 	}(srv)
 
+	logsagent.Info("run server " + srv.Name() + " success and wait stopch ")
 	<-srv.Stopch()
+	logsagent.Info("server " + srv.Name() + " stopch waited ")
 	wg.Done()
 }
 
 //Stop ..
 func Stop() {
+	var wg sync.WaitGroup
+
 	for _, srv := range servers {
-		go func(srv Server) {
+		wg.Add(1) //这个要放在主协程，不然子协程来不及Add
+		go func(srv Server, wg *sync.WaitGroup) {
 			defer func() {
 				if err := recover(); err != nil {
 					logsagent.Error("Exception has been caught when stop server " + srv.Name())
@@ -78,7 +84,12 @@ func Stop() {
 				}
 			}()
 
+			logsagent.Info("try to stop server : " + srv.Name())
 			srv.Stop()
-		}(srv)
+			<-time.After(1 * time.Second)
+			wg.Done()
+		}(srv, &wg)
 	}
+
+	wg.Wait()
 }

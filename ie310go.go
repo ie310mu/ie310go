@@ -35,4 +35,19 @@ func Run(callback func()) {
 	route.Run()
 }
 
+//Stop
+func Stop() {
+	//异常处理
+	defer func() {
+		if err := recover(); err != nil {
+			logsagent.Error("Exception has been caught. ", err)
+			logs.Warn("Press return to exit.")
+			var empty string
+			fmt.Scanln(&empty)
+		}
+	}()
+
+	route.Stop()
+}
+
 type appInitFunc func()

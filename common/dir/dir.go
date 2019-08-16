@@ -8,6 +8,8 @@ import (
 	"github.com/ie310mu/ie310go/common/throw"
 )
 
+//sep := string(os.PathSeparator)
+
 //GetCurrentPath ..
 func GetCurrentPath() string {
 	// file, err := exec.LookPath(os.Args[0])  //exec.LookPath:解析环境变量？

@@ -29,8 +29,7 @@ var defaultServeHTTPConfig = ServerHTTPConfig{
 }
 
 //ServerHTTPConfig ..
-//StaticDirs、DefaultStaticDir中目录分隔符统一以/表示（不区分windows、linux），结尾不带/
-//相对exe所在目录，以 . 代表当前目录开始（如  .    ./xxx），绝对目录以c:/或/开始
+//StaticDirs、DefaultStaticDir建议用绝对目录，如  dir.GetCurrentPath() + "static"
 type ServerHTTPConfig struct {
 	Port             string `json:"port,omitempty"`
 	ServiceSuffix    string `json:"serviceSuffix,omitempty"`
@@ -43,12 +42,12 @@ type ServerHTTPConfig struct {
 
 //NewServerHTTPDefault ..
 func NewServerHTTPDefault() *ServerHTTP {
-	return &ServerHTTP{services: make(map[string]IService), config: defaultServeHTTPConfig, name: "defaultHttpServer"}
+	return &ServerHTTP{services: make(map[string]IService), config: defaultServeHTTPConfig, name: "defaultHttpServer", stopch: make(chan bool)}
 }
 
 //NewServerHTTP ..
 func NewServerHTTP(cfg ServerHTTPConfig, n string) *ServerHTTP {
-	return &ServerHTTP{services: make(map[string]IService), config: cfg, name: n}
+	return &ServerHTTP{services: make(map[string]IService), config: cfg, name: n, stopch: make(chan bool)}
 }
 
 //ServerHTTP ..
@@ -77,7 +76,9 @@ func (s *ServerHTTP) Run() {
 			logsagent.Error("server " + s.Name() + " run error： ")
 			logsagent.Error(err)
 			atomic.StoreInt32(&s.run, 0)
-			s.stopch <- false
+			logsagent.Info("server " + s.Name() + " set stopch to true")
+			s.stopch <- true
+			close(s.stopch)
 		}
 	}()
 
@@ -91,7 +92,9 @@ func (s *ServerHTTP) Run() {
 func (s *ServerHTTP) Stop() {
 	if atomic.CompareAndSwapInt32(&s.run, 1, 0) {
 		//todo.............如何关闭http.ListenAndServe???
-		s.stopch <- false
+		logsagent.Info("server " + s.Name() + " set stopch to true")
+		s.stopch <- true
+		close(s.stopch)
 	}
 }
 

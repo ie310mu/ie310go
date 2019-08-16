@@ -9,10 +9,10 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rpc"
 	"github.com/ie310mu/ie310go/common/logsagent"
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/common/throw"
+	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rpc"
 	"github.com/ie310mu/ie310go/logs"
 	"github.com/ie310mu/ie310go/session"
 )
@@ -41,22 +41,22 @@ type ServerEthrpcConfig struct {
 
 //NewServerEthrpcDefaultTCP ..
 func NewServerEthrpcDefaultTCP() *ServerEthrpc {
-	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeTCPConfig, name: "defaultTcpServer"}
+	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeTCPConfig, name: "defaultTcpServer", stopch: make(chan bool)}
 }
 
 //NewServerEthrpcDefaultIpc ..
 func NewServerEthrpcDefaultIpc() *ServerEthrpc {
-	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeIpcConfig, name: "defaultIpcServer"}
+	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeIpcConfig, name: "defaultIpcServer", stopch: make(chan bool)}
 }
 
 //NewServerEthrpcDefaultWs ..
 func NewServerEthrpcDefaultWs() *ServerEthrpc {
-	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeWsConfig, name: "defaultWsServer"}
+	return &ServerEthrpc{services: make(map[string]IService), config: defaultServeWsConfig, name: "defaultWsServer", stopch: make(chan bool)}
 }
 
 //NewServerEthrpc ..
 func NewServerEthrpc(cfg ServerEthrpcConfig, n string) *ServerEthrpc {
-	return &ServerEthrpc{services: make(map[string]IService), config: cfg, name: n}
+	return &ServerEthrpc{services: make(map[string]IService), config: cfg, name: n, stopch: make(chan bool)}
 }
 
 //ServerEthrpc ..
@@ -86,7 +86,9 @@ func (s *ServerEthrpc) Run() {
 			logsagent.Error("server " + s.Name() + " run error： ")
 			logsagent.Error(err)
 			atomic.StoreInt32(&s.run, 0)
-			s.stopch <- false
+			logsagent.Info("server " + s.Name() + " set stopch to true")
+			s.stopch <- true
+			close(s.stopch)
 		}
 	}()
 
@@ -99,7 +101,7 @@ func (s *ServerEthrpc) Run() {
 	throw.CheckErr(err)
 	defer listener.Close()
 
-	var c chan int
+	var c chan int = make(chan int)
 	go s.startListen(listener, c)
 	<-c
 }
@@ -285,7 +287,9 @@ func (h *ethrpcHandler) getService(key string) IService {
 func (s *ServerEthrpc) Stop() {
 	if atomic.CompareAndSwapInt32(&s.run, 1, 0) {
 		s.ethserver.Stop()
-		s.stopch <- false
+		logsagent.Info("server " + s.Name() + " set stopch to true")
+		s.stopch <- true
+		close(s.stopch)
 	}
 }
 

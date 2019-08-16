@@ -14,8 +14,8 @@ import (
 	"github.com/ie310mu/ie310go/common/throw"
 	"github.com/ie310mu/ie310go/session"
 
-	pb "github.com/ie310mu/ie310go/grpc"
 	"github.com/ie310mu/ie310go/forks/google.golang.org/grpc"
+	pb "github.com/ie310mu/ie310go/grpc"
 )
 
 //ServerGrpcConfig ..
@@ -27,12 +27,12 @@ var defaultServeGrpcConfig = ServerGrpcConfig{Port: "8033"}
 
 //NewServerGrpcDefault ..
 func NewServerGrpcDefault() *ServerGrpc {
-	return &ServerGrpc{services: make(map[string]IService), config: defaultServeGrpcConfig, name: "defaultGrpcServer"}
+	return &ServerGrpc{services: make(map[string]IService), config: defaultServeGrpcConfig, name: "defaultGrpcServer", stopch: make(chan bool)}
 }
 
 //NewServerGrpc ..
 func NewServerGrpc(cfg ServerGrpcConfig, n string) *ServerGrpc {
-	return &ServerGrpc{services: make(map[string]IService), config: cfg, name: n}
+	return &ServerGrpc{services: make(map[string]IService), config: cfg, name: n, stopch: make(chan bool)}
 }
 
 //ServerGrpc ..
@@ -62,7 +62,9 @@ func (s *ServerGrpc) Run() {
 			logsagent.Error("server " + s.Name() + " run error： ")
 			logsagent.Error(err)
 			atomic.StoreInt32(&s.run, 0)
-			s.stopch <- false
+			logsagent.Info("server " + s.Name() + " set stopch to true")
+			s.stopch <- true
+			close(s.stopch)
 		}
 	}()
 
@@ -75,7 +77,7 @@ func (s *ServerGrpc) Run() {
 	throw.CheckErr(err)
 	defer listener.Close()
 
-	var c chan int
+	var c chan int = make(chan int)
 	go s.startListen(listener, c)
 	<-c
 }
@@ -162,7 +164,9 @@ func (h *grpcHandler) getService(key string) IService {
 func (s *ServerGrpc) Stop() {
 	if atomic.CompareAndSwapInt32(&s.run, 1, 0) {
 		s.grpcserver.Stop()
-		s.stopch <- false
+		logsagent.Info("server " + s.Name() + " set stopch to true")
+		s.stopch <- true
+		close(s.stopch)
 	}
 }
 

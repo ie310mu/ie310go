@@ -15,10 +15,6 @@ import (
 )
 
 func registerTestServers() {
-	registerTestServersHTTP()
-}
-
-func registerTestServersHTTP() {
 	httpConfig := ServerHTTPConfig{
 		Port:          "8003",
 		ServiceSuffix: "goss",

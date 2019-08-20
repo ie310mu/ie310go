@@ -83,7 +83,7 @@ func (args *ServiceArgs) GetBoolParamWithDefault(paramName string, defaultValue 
 	return b
 }
 
-//GetIntParam 获取bool参数，不能为空
+//GetIntParam 获取int参数，不能为空
 func (args *ServiceArgs) GetIntParam(paramName string) int {
 	str := args.GetStringParamWithCheck(paramName, false)
 	i, err := strconv.Atoi(str)
@@ -165,13 +165,13 @@ func (args *ServiceArgs) GetDateParamWithDefault(paramName string, defaultValue 
 
 var zeroTime time.Time
 
-//GetBeginDateParam 获取开始日期（仅日期部分），获取不到d.IsZero()==true
+//GetBeginDateParam 获取开始日期（仅日期部分），获取不到d.IsZero()==true，对应参数名beginDate，格式2019-08-12
 func (args *ServiceArgs) GetBeginDateParam() time.Time {
 	d := args.GetDateParamWithDefault("beginDate", zeroTime)
 	return d
 }
 
-//GetEndDateParam 获取结束日期（仅日期部分，且加1天），获取不到d.IsZero()==true
+//GetEndDateParam 获取结束日期（仅日期部分，且加1天），获取不到d.IsZero()==true，对应参数名endDate，格式2019-08-12
 func (args *ServiceArgs) GetEndDateParam() time.Time {
 	d := args.GetDateParamWithDefault("endDate", zeroTime)
 	if !d.IsZero() {
@@ -180,18 +180,18 @@ func (args *ServiceArgs) GetEndDateParam() time.Time {
 	return d
 }
 
-//GetEndDateTimeParam 获取结束日期时间
-func (args *ServiceArgs) GetEndDateTimeParam() time.Time {
-	d := args.GetDateTimeParamWithDefault("endDate", zeroTime)
+//GetBeginDateTimeParam 获取开始日期时间
+func (args *ServiceArgs) GetBeginDateTimeParam() time.Time {
+	d := args.GetDateTimeParamWithDefault("beginDate", zeroTime)
 	if !d.IsZero() {
 		d = time.Date(d.Year(), d.Month(), d.Day(), d.Hour(), d.Minute(), d.Second()+1, 0, time.Local)
 	}
 	return d
 }
 
-//GetBeginDateTimeParam 获取开始日期时间
-func (args *ServiceArgs) GetBeginDateTimeParam() time.Time {
-	d := args.GetDateTimeParamWithDefault("beginDate", zeroTime)
+//GetEndDateTimeParam 获取结束日期时间
+func (args *ServiceArgs) GetEndDateTimeParam() time.Time {
+	d := args.GetDateTimeParamWithDefault("endDate", zeroTime)
 	if !d.IsZero() {
 		d = time.Date(d.Year(), d.Month(), d.Day(), d.Hour(), d.Minute(), d.Second()+1, 0, time.Local)
 	}
@@ -225,13 +225,13 @@ func (args *ServiceArgs) GetObjectParam(paramName string, obj interface{}) {
 	json.FromJSON(jsonStr, obj)
 }
 
-//GetIsMobile 是否从移动设备访问
+//GetIsMobile 是否从移动设备访问，对应参数isMobile=true
 func (args *ServiceArgs) GetIsMobile() bool {
 	isMobile := args.GetBoolParamWithDefault("isMobile", false)
 	return isMobile
 }
 
-//GetIsApp 是否从app访问
+//GetIsApp 是否从app访问，对应参数isApp=true
 func (args *ServiceArgs) GetIsApp() bool {
 	isApp := args.GetBoolParamWithDefault("isApp", false)
 	return isApp

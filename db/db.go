@@ -288,3 +288,22 @@ func (m BaseMapper) Test(selectStr string, args ...interface{}) (r error) {
 
 	return nil
 }
+
+//CheckOrderStr ..
+func CheckOrderStr(fieldsMap map[string]int, orderStr string) {
+	if orderStr == "" {
+		return
+	}
+
+	ks := strings.FieldsFunc(orderStr, func(r rune) bool { return r == ' ' })
+	for _, k := range ks {
+		k = strings.Trim(k, " ")
+		k = strings.ToLower(k)
+		if k == "asc" || k == "desc" {
+			continue
+		}
+		if _, ok := fieldsMap[k]; !ok {
+			panic("error part in orderStr : " + k)
+		}
+	}
+}

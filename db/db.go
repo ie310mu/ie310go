@@ -354,5 +354,5 @@ func (m *BaseMapper) CheckArgs(args ...interface{}) []interface{} {
 		}
 	}
 
-	return newArgs1
+	return newArgs
 }

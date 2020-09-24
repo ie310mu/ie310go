@@ -229,7 +229,7 @@ func (h *ethrpcHandler) Sub(ctx context.Context, kv map[string]interface{}) (sub
 				logs.Info("client " + idstr + " err in " + nip.Name() + "：" + fmt.Sprintf("%v", err))
 				goto outfor
 			case msg := <-ss:
-				logs.Info(fmt.Sprintf("%v", msg) + "  -->  " + idstr)
+				//logs.Info(fmt.Sprintf("%v", msg) + "  -->  " + idstr)
 				notifier.Notify(subscription.ID, msg)
 			}
 		}
@@ -339,6 +339,10 @@ type RequestResponseEthrpc struct {
 	ctx           context.Context
 	form          map[string]interface{}
 	packageResult bool //是否将结果用JsonServiceResult封装
+}
+
+func (rs *RequestResponseEthrpc) SetArgValue(key string, value string) {
+	rs.form[key] = value
 }
 
 //GetStringFromForm 从Form中获取一个字符串

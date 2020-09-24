@@ -10,7 +10,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/internal/tag"
+	"golang.org/x/text/internal/tag"
 )
 
 // findIndex tries to find the given tag in idx and returns a standardized error

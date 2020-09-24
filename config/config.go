@@ -25,3 +25,15 @@ func ScanFromFile(fileName string, dest interface{}) {
 	logsagent.Info("the value after unmarshal is:")
 	logsagent.Info(newStr)
 }
+
+//ScanFromFile2 不输出前后内容
+func ScanFromFile2(fileName string, dest interface{}) {
+	logsagent.Info(fileName)
+	b, err := ioutil.ReadFile(fileName)
+	throw.CheckErr(err)
+
+	jsonStr := string(b)
+
+	json.FromJSON(jsonStr, dest)
+	throw.CheckErr(err)
+}

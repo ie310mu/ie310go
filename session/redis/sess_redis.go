@@ -41,7 +41,7 @@ import (
 
 	"github.com/ie310mu/ie310go/session"
 
-	"github.com/ie310mu/ie310go/forks/github.com/gomodule/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 )
 
 var redispder = &Provider{}

@@ -18,16 +18,22 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"time"
 
-	"github.com/ie310mu/ie310go/forks/database/sql"
+	"database/sql"
 
+	"github.com/ie310mu/ie310go/common/json"
 	"github.com/ie310mu/ie310go/common/logsagent"
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/common/throw"
-	_ "github.com/ie310mu/ie310go/forks/github.com/go-sql-driver/mysql" //导入mysql驱动
-	"github.com/ie310mu/ie310go/forks/github.com/ilibs/gosql"
-	"github.com/ie310mu/ie310go/forks/github.com/jmoiron/sqlx"
+	_ "github.com/go-sql-driver/mysql" //导入mysql驱动
+	"github.com/ilibs/gosql"
+	"github.com/jmoiron/sqlx"
 )
+
+type IInsertOrUpdateByJsonMapper interface {
+	InsertOrUpdateByJson(tx *sqlx.Tx, jsonStr string, userId int, onlyCheck bool)
+}
 
 //BaseMapper ..
 type BaseMapper struct {
@@ -50,7 +56,7 @@ mp.Tx(func(tx *sqlx.Tx) (r error) {
 		return nil
 	})
 */
-func (m BaseMapper) Tx(fn func(tx *sqlx.Tx) error) {
+func (m *BaseMapper) Tx(fn func(tx *sqlx.Tx) error) {
 	logsagent.Info("begin tx")
 	err := m.DB.Tx(fn)
 	if err == nil {
@@ -69,6 +75,7 @@ type fnDeferError struct {
 func (fd fnDeferError) fn(tx *sqlx.Tx) (r error) {
 	defer func() {
 		if err := recover(); err != nil {
+			logsagent.Error(err)
 			msg := obj.InterfaceToStr(err)
 			r = errors.New(msg)
 		}
@@ -86,7 +93,7 @@ mp.Tx2(func(tx *sqlx.Tx)  {
 		//do.....................
 	})
 */
-func (m BaseMapper) Tx2(fnDonotDeferError func(tx *sqlx.Tx)) {
+func (m *BaseMapper) Tx2(fnDonotDeferError func(tx *sqlx.Tx)) {
 	logsagent.Info("begin tx")
 
 	fd := &fnDeferError{fnDonotDeferError: fnDonotDeferError}
@@ -95,14 +102,14 @@ func (m BaseMapper) Tx2(fnDonotDeferError func(tx *sqlx.Tx)) {
 		logsagent.Info("end tx without err")
 	} else {
 		logsagent.Info("end tx with err")
-		logsagent.Error("%s", err)
+		//logsagent.Error("%s", err)
 	}
 
 	throw.CheckErr(err)
 }
 
 //ScanItem 获取一行数据，没有数据返回nil，出错抛出异常
-func (m BaseMapper) ScanItem(tx *sqlx.Tx, dest interface{}, sqlStr string, args ...interface{}) (r interface{}) {
+func (m *BaseMapper) ScanItem(tx *sqlx.Tx, dest interface{}, sqlStr string, args ...interface{}) (r interface{}) {
 	defer func() {
 		if err := recover(); err != nil {
 			if isNoRowsError(err) {
@@ -113,6 +120,7 @@ func (m BaseMapper) ScanItem(tx *sqlx.Tx, dest interface{}, sqlStr string, args 
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	var err error
 	if tx == nil {
 		err = m.DB.Get(dest, sqlStr, args...)
@@ -127,7 +135,7 @@ func (m BaseMapper) ScanItem(tx *sqlx.Tx, dest interface{}, sqlStr string, args 
 
 //ScanItems 获取多行数据，没有数据不会在数组中增加元素，出错抛出异常
 //rowsInPage都等于0时代表不处理分页，可自行在sql中进行处理
-func (m BaseMapper) ScanItems(tx *sqlx.Tx, pageIndex int, rowsInPage int, dest interface{}, sqlStr string, args ...interface{}) {
+func (m *BaseMapper) ScanItems(tx *sqlx.Tx, pageIndex int, rowsInPage int, dest interface{}, sqlStr string, args ...interface{}) {
 	defer func() {
 		if err := recover(); err != nil {
 			if isNoRowsError(err) {
@@ -138,6 +146,7 @@ func (m BaseMapper) ScanItems(tx *sqlx.Tx, pageIndex int, rowsInPage int, dest i
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	err := Select(m.DB, tx, pageIndex, rowsInPage, dest, sqlStr, args...) //Select方法在没有数据时不会有err?
 	throw.CheckErr(err)
 	logsagent.Info("return n rows") //不知道怎样获取dest的实际长度?
@@ -145,7 +154,7 @@ func (m BaseMapper) ScanItems(tx *sqlx.Tx, pageIndex int, rowsInPage int, dest i
 }
 
 //ScanInt 获取整数，没有返回0，出错抛出异常
-func (m BaseMapper) ScanInt(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r int) {
+func (m *BaseMapper) ScanInt(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r int) {
 	defer func() {
 		if err := recover(); err != nil {
 			if isNoRowsError(err) {
@@ -157,6 +166,7 @@ func (m BaseMapper) ScanInt(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r 
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	var row *sqlx.Row
 	if tx == nil {
 		row = m.DB.QueryRowx(sqlStr, args...)
@@ -171,7 +181,7 @@ func (m BaseMapper) ScanInt(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r 
 }
 
 //ScanFloat 获取数值，没有返回0，出错抛出异常
-func (m BaseMapper) ScanFloat(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r float64) {
+func (m *BaseMapper) ScanFloat(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r float64) {
 	defer func() {
 		if err := recover(); err != nil {
 			if isNoRowsError(err) {
@@ -183,6 +193,7 @@ func (m BaseMapper) ScanFloat(tx *sqlx.Tx, sqlStr string, args ...interface{}) (
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	var row *sqlx.Row
 	if tx == nil {
 		row = m.DB.QueryRowx(sqlStr, args...)
@@ -197,7 +208,7 @@ func (m BaseMapper) ScanFloat(tx *sqlx.Tx, sqlStr string, args ...interface{}) (
 }
 
 //ScanString 获取字符串值，没有返回""，出错抛出异常
-func (m BaseMapper) ScanString(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r string) {
+func (m *BaseMapper) ScanString(tx *sqlx.Tx, sqlStr string, args ...interface{}) (r string) {
 	defer func() {
 		if err := recover(); err != nil {
 			if isNoRowsError(err) {
@@ -208,6 +219,7 @@ func (m BaseMapper) ScanString(tx *sqlx.Tx, sqlStr string, args ...interface{}) 
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	str := ""
 	var row *sqlx.Row
 	if tx == nil {
@@ -223,9 +235,10 @@ func (m BaseMapper) ScanString(tx *sqlx.Tx, sqlStr string, args ...interface{}) 
 }
 
 //DeleteOrUpdateItems 删除或更新数据，出错抛出异常
-func (m BaseMapper) DeleteOrUpdateItems(tx *sqlx.Tx, sqlStr string, args ...interface{}) int {
+func (m *BaseMapper) DeleteOrUpdateItems(tx *sqlx.Tx, sqlStr string, args ...interface{}) int {
 	var sqlResult sql.Result
 	var err error
+	args = m.CheckArgs(args...)
 
 	if tx == nil {
 		sqlResult, err = m.DB.Exec(sqlStr, args...)
@@ -241,10 +254,11 @@ func (m BaseMapper) DeleteOrUpdateItems(tx *sqlx.Tx, sqlStr string, args ...inte
 }
 
 //InsertItem 插入一行数据，出错抛出异常  如果id是整形，可以返回id(第1个参数，第2个参数是插入的行数)
-func (m BaseMapper) InsertItem(tx *sqlx.Tx, sqlStr string, args ...interface{}) (int, int) {
+func (m *BaseMapper) InsertItem(tx *sqlx.Tx, sqlStr string, args ...interface{}) (int, int) {
 	var sqlResult sql.Result
 	var err error
 
+	args = m.CheckArgs(args...)
 	if tx == nil {
 		sqlResult, err = m.DB.Exec(sqlStr, args...)
 	} else {
@@ -272,7 +286,7 @@ func isNoRowsError(err interface{}) bool {
 }
 
 //Test 测试数据库是否连接（测试方式，指定sql语句返回一个字符串，如果测试失败，函数会返回失败信息，否则返回""）
-func (m BaseMapper) Test(selectStr string, args ...interface{}) (r error) {
+func (m *BaseMapper) Test(selectStr string, args ...interface{}) (r error) {
 	defer func() {
 		if err := recover(); err != nil {
 			if !isNoRowsError(err) {
@@ -281,10 +295,64 @@ func (m BaseMapper) Test(selectStr string, args ...interface{}) (r error) {
 		}
 	}()
 
+	args = m.CheckArgs(args...)
 	row := m.DB.QueryRowx(selectStr, args...)
 	var result string
 	err := row.Scan(&result)
 	throw.CheckErr(err)
 
 	return nil
+}
+
+//CheckOrderStr ..
+func CheckOrderStr(fieldsMap map[string]int, orderStr string) {
+	if orderStr == "" {
+		return
+	}
+
+	ks := strings.FieldsFunc(orderStr,
+		func(r rune) bool {
+			return r == ' ' || r == ','
+		})
+	for _, k := range ks {
+		k = strings.Trim(k, " ")
+		k = strings.ToLower(k)
+		if k == "asc" || k == "desc" {
+			continue
+		}
+		if _, ok := fieldsMap[k]; !ok {
+			panic("error part in orderStr : " + k)
+		}
+	}
+}
+
+func AppendWhere(whereStr string, appendWhereStr string) string {
+	if whereStr != "" {
+		whereStr = whereStr + " and "
+	}
+	whereStr = whereStr + appendWhereStr
+	return whereStr
+}
+
+func CheckWhere(whereStr string) string {
+	if whereStr != "" {
+		whereStr = " where " + whereStr
+	}
+	return whereStr
+}
+
+func (m *BaseMapper) CheckArgs(args ...interface{}) []interface{} {
+	var newArgs = []interface{}{}
+
+	for _, arg := range args {
+		v, ok := arg.(json.JsonTime)
+		if ok {
+			timeArg := time.Time(v)
+			newArgs = append(newArgs, timeArg)
+		} else {
+			newArgs = append(newArgs, arg)
+		}
+	}
+
+	return newArgs
 }

@@ -3,8 +3,8 @@ package db
 import (
 	"strconv"
 
-	"github.com/ie310mu/ie310go/forks/github.com/ilibs/gosql"
-	"github.com/ie310mu/ie310go/forks/github.com/jmoiron/sqlx"
+	"github.com/ilibs/gosql"
+	"github.com/jmoiron/sqlx"
 )
 
 //PageIndexToLimit 将页码转换为limit的起始序号

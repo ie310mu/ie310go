@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/ssdb/gossdb/ssdb"
+	"github.com/ssdb/gossdb/ssdb"
 
 	"github.com/ie310mu/ie310go/cache"
 )

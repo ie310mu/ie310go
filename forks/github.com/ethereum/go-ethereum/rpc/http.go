@@ -32,7 +32,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/github.com/rs/cors"
+	"github.com/rs/cors"
 )
 
 const (

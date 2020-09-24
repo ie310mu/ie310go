@@ -7,7 +7,7 @@ import (
 	pathpkg "path"
 	"strings"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 import (

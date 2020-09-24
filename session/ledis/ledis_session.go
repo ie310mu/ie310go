@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	"github.com/ie310mu/ie310go/session"
-	"github.com/ie310mu/ie310go/forks/github.com/siddontang/ledisdb/config"
-	"github.com/ie310mu/ie310go/forks/github.com/siddontang/ledisdb/ledis"
+	"github.com/siddontang/ledisdb/config"
+	"github.com/siddontang/ledisdb/ledis"
 )
 
 var (

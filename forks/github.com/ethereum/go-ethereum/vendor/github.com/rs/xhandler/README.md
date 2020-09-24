@@ -28,7 +28,7 @@ import (
 
 	"github.com/ie310mu/ie310go/forks/github.com/rs/cors"
 	"github.com/ie310mu/ie310go/forks/github.com/rs/xhandler"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 type myMiddleware struct {
@@ -88,7 +88,7 @@ import (
 
 	"github.com/ie310mu/ie310go/forks/github.com/rs/xhandler"
 	"github.com/ie310mu/ie310go/forks/github.com/rs/xmux"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 func main() {

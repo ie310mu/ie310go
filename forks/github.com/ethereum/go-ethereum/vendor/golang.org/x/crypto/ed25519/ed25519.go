@@ -24,7 +24,7 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ed25519/internal/edwards25519"
+	"golang.org/x/crypto/ed25519/internal/edwards25519"
 )
 
 const (

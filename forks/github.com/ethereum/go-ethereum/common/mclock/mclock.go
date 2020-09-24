@@ -20,7 +20,7 @@ package mclock
 import (
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/aristanetworks/goarista/monotime"
+	"github.com/aristanetworks/goarista/monotime"
 )
 
 // AbsTime represents absolute monotonic time.

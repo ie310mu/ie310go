@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/pbkdf2"
+	"golang.org/x/crypto/pbkdf2"
 )
 
 func TestWhisperBasic(t *testing.T) {

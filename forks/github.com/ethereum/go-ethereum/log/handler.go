@@ -13,7 +13,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ie310mu/ie310go/forks/github.com/go-stack/stack"
+	"github.com/go-stack/stack"
 )
 
 // Handler defines where and how log records are written.

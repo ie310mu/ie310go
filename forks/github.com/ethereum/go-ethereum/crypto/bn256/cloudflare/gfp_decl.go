@@ -6,7 +6,7 @@ package bn256
 // assembly implementations of these functions, provided that they exist.
 
 import (
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/cpu"
+	"golang.org/x/sys/cpu"
 )
 
 //nolint:varcheck

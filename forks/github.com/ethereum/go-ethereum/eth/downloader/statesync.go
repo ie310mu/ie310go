@@ -28,7 +28,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/trie"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // stateReq represents a batch of state fetch requests grouped together into

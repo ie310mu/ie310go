@@ -10,7 +10,7 @@ import (
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/common/throw"
 	pb "github.com/ie310mu/ie310go/grpc"
-	"github.com/ie310mu/ie310go/forks/google.golang.org/grpc"
+	"google.golang.org/grpc"
 )
 
 func newClientGrpc(rawurl string) *ClientGrpc {

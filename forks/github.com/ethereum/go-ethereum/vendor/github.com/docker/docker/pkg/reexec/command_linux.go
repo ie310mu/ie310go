@@ -4,7 +4,7 @@ import (
 	"os/exec"
 	"syscall"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+	"golang.org/x/sys/unix"
 )
 
 // Self returns the path to the current process's binary.

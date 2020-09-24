@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+	"golang.org/x/sys/unix"
 )
 
 func (self *FileSystemUsage) Get(path string) error {

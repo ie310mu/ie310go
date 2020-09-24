@@ -20,8 +20,8 @@
 //
 // Usage:
 // import(
-//   _ "github.com/ie310mu/ie310go/forks/github.com/astaxie/beego/cache/memcache"
-//   "github.com/ie310mu/ie310go/forks/github.com/astaxie/beego/cache"
+//   _ "github.com/astaxie/beego/cache/memcache"
+//   "github.com/astaxie/beego/cache"
 // )
 //
 //  bm, err := cache.NewCache("memcache", `{"conn":"127.0.0.1:11211"}`)
@@ -36,7 +36,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/cache"
-	"github.com/ie310mu/ie310go/forks/github.com/bradfitz/gomemcache/memcache"
+	"github.com/bradfitz/gomemcache/memcache"
 )
 
 // Cache Memcache adapter.

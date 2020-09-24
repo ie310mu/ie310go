@@ -8,7 +8,7 @@
 // Encoding implementations are provided in other packages, such as
 // github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding/charmap and
 // github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding/japanese.
-package encoding // import "github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding"
+package encoding // import "golang.org/x/text/encoding"
 
 import (
 	"errors"
@@ -16,8 +16,8 @@ import (
 	"strconv"
 	"unicode/utf8"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding/internal/identifier"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/transform"
+	"golang.org/x/text/encoding/internal/identifier"
+	"golang.org/x/text/transform"
 )
 
 // TODO:

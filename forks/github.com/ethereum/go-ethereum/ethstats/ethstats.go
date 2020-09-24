@@ -41,7 +41,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/p2p"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rpc"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/websocket"
+	"golang.org/x/net/websocket"
 )
 
 const (

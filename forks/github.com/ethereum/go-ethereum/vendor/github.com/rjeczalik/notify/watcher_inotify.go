@@ -15,7 +15,7 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+	"golang.org/x/sys/unix"
 )
 
 // eventBufferSize defines the size of the buffer given to read(2) function. One

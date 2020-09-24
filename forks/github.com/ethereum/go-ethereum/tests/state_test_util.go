@@ -34,7 +34,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/params"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rlp"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // StateTest checks transaction processing without block context.

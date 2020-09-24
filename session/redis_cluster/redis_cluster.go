@@ -40,7 +40,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/session"
-	rediss "github.com/ie310mu/ie310go/forks/github.com/go-redis/redis"
+	rediss "/github.com/go-redis/redis"
 )
 
 var redispder = &Provider{}

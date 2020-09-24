@@ -30,4 +30,5 @@ type RequestResponse interface {
 	PrepareResult(r interface{}) interface{}        //准备结果
 	GetRemoteIP() string
 	GetRemotePort() string
+	SetArgValue(key string, value string) //后期手工添加参数
 }

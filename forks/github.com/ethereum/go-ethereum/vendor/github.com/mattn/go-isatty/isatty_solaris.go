@@ -4,7 +4,7 @@
 package isatty
 
 import (
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+	"golang.org/x/sys/unix"
 )
 
 // IsTerminal returns true if the given file descriptor is a terminal.

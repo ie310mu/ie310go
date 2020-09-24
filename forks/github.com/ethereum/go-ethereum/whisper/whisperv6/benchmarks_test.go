@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/crypto"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/pbkdf2"
+	"golang.org/x/crypto/pbkdf2"
 )
 
 func BenchmarkDeriveKeyMaterial(b *testing.B) {

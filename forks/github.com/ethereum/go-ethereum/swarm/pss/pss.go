@@ -39,7 +39,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/pot"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/storage"
 	whisper "github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/whisper/whisperv6"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 const (

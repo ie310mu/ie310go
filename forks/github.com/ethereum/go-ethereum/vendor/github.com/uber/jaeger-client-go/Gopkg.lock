@@ -149,7 +149,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/ie310mu/ie310go/forks/golang.org/x/net"
+  name = "golang.org/x/net"
   packages = [
     "context",
     "context/ctxhttp"

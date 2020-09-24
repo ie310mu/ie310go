@@ -31,9 +31,9 @@ import (
 	"strings"
 	"time"
 
-	mapset "github.com/ie310mu/ie310go/forks/github.com/deckarep/golang-set"
+	mapset "github.com/deckarep/golang-set"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/websocket"
+	"golang.org/x/net/websocket"
 )
 
 // websocketJSONCodec is a custom JSON codec with payload size enforcement and

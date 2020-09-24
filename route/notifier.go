@@ -11,24 +11,24 @@ type NotifierInProcess interface {
 }
 
 type BaseNotiferInProcess struct {
-	chsLock *sync.Mutex
-	chs     map[string]chan interface{}
+	ChsLock *sync.Mutex
+	Chs     map[string]chan interface{}
 }
 
 //AddChan ..
 func (nip *BaseNotiferInProcess) AddChan(key string, ch chan interface{}) {
-	nip.chsLock.Lock()
-	defer nip.chsLock.Unlock()
+	nip.ChsLock.Lock()
+	defer nip.ChsLock.Unlock()
 
-	nip.chs[key] = ch
+	nip.Chs[key] = ch
 }
 
 //RemoveChan ..
 func (nip *BaseNotiferInProcess) RemoveChan(key string, ch chan interface{}) {
-	nip.chsLock.Lock()
-	defer nip.chsLock.Unlock()
+	nip.ChsLock.Lock()
+	defer nip.ChsLock.Unlock()
 
-	delete(nip.chs, key)
+	delete(nip.Chs, key)
 }
 
 //Name ..
@@ -37,11 +37,11 @@ func (nip *BaseNotiferInProcess) Name() string {
 }
 
 //notiferChs ..
-func (nip *BaseNotiferInProcess) notiferChs(data interface{}) {
-	nip.chsLock.Lock()
-	defer nip.chsLock.Unlock()
+func (nip *BaseNotiferInProcess) NotiferChs(data interface{}) {
+	nip.ChsLock.Lock()
+	defer nip.ChsLock.Unlock()
 
-	for _, ch := range nip.chs {
+	for _, ch := range nip.Chs {
 		ch <- data
 	}
 }

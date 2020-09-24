@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 // CloseHandler returns a Handler, cancelling the context when the client

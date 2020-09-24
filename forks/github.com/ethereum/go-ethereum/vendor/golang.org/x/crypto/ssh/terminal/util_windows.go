@@ -19,7 +19,7 @@ package terminal
 import (
 	"os"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/windows"
+	"golang.org/x/sys/windows"
 )
 
 type State struct {

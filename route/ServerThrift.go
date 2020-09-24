@@ -13,7 +13,7 @@ import (
 	"github.com/ie310mu/ie310go/common/throw"
 	"github.com/ie310mu/ie310go/session"
 
-	"github.com/ie310mu/ie310go/forks/github.com/apache/thrift/lib/go/thrift"
+	"github.com/apache/thrift/lib/go/thrift"
 	pb "github.com/ie310mu/ie310go/thrift/gen-go/thrift"
 )
 
@@ -214,6 +214,10 @@ type RequestResponseThrift struct {
 	ctx           context.Context
 	form          map[string]interface{}
 	packageResult bool //是否将结果用JsonServiceResult封装
+}
+
+func (rs *RequestResponseThrift) SetArgValue(key string, value string) {
+	rs.form[key] = value
 }
 
 //GetStringFromForm 从Form中获取一个字符串

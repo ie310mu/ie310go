@@ -21,7 +21,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/html/charset"
+	"golang.org/x/net/html/charset"
 
 	"github.com/ie310mu/ie310go/forks/github.com/huin/goupnp/httpu"
 	"github.com/ie310mu/ie310go/forks/github.com/huin/goupnp/ssdp"

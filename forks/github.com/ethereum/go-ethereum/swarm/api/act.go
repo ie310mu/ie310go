@@ -18,8 +18,8 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/log"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/sctx"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/storage"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/scrypt"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/scrypt"
+	"golang.org/x/crypto/sha3"
 	cli "gopkg.in/urfave/cli.v1"
 )
 

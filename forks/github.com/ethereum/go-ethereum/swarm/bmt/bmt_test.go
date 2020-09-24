@@ -27,7 +27,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/testutil"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // the actual data length generated (could be longer than max datalength of the BMT)

@@ -10,15 +10,11 @@ import (
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/config"
 	"github.com/ie310mu/ie310go/db"
-	"github.com/ie310mu/ie310go/forks/github.com/ilibs/gosql"
-	"github.com/ie310mu/ie310go/forks/github.com/jmoiron/sqlx"
+	"github.com/ilibs/gosql"
+	"github.com/jmoiron/sqlx"
 )
 
 func registerTestServers() {
-	registerTestServersHTTP()
-}
-
-func registerTestServersHTTP() {
 	httpConfig := ServerHTTPConfig{
 		Port:          "8003",
 		ServiceSuffix: "goss",

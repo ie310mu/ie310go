@@ -42,8 +42,8 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common/math"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/crypto"
 	"github.com/ie310mu/ie310go/forks/github.com/pborman/uuid"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/pbkdf2"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/scrypt"
+	"golang.org/x/crypto/pbkdf2"
+	"golang.org/x/crypto/scrypt"
 )
 
 const (

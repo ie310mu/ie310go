@@ -27,7 +27,7 @@ import (
 	"strings"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // Lengths of hashes and addresses in bytes.

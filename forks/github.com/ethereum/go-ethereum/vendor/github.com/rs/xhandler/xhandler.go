@@ -14,7 +14,7 @@ package xhandler // import "github.com/ie310mu/ie310go/forks/github.com/rs/xhand
 import (
 	"net/http"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 // HandlerC is a net/context aware http.Handler

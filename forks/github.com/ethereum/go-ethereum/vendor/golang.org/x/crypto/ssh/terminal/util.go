@@ -14,10 +14,10 @@
 // 	        panic(err)
 // 	}
 // 	defer terminal.Restore(0, oldState)
-package terminal // import "github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ssh/terminal"
+package terminal // import "golang.org/x/crypto/ssh/terminal"
 
 import (
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+	"golang.org/x/sys/unix"
 )
 
 // State contains the state of a terminal.

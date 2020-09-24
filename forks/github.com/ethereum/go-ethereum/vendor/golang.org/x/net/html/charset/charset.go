@@ -6,7 +6,7 @@
 //
 // The mapping from encoding labels to encodings is defined at
 // https://encoding.spec.whatwg.org/.
-package charset // import "github.com/ie310mu/ie310go/forks/golang.org/x/net/html/charset"
+package charset // import "golang.org/x/net/html/charset"
 
 import (
 	"bytes"
@@ -16,11 +16,11 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/html"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding/charmap"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/encoding/htmlindex"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/transform"
+	"golang.org/x/net/html"
+	"golang.org/x/text/encoding"
+	"golang.org/x/text/encoding/charmap"
+	"golang.org/x/text/encoding/htmlindex"
+	"golang.org/x/text/transform"
 )
 
 // Lookup returns the encoding with the specified label, and its canonical

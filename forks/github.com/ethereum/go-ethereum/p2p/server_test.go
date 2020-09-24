@@ -29,7 +29,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/p2p/enode"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/p2p/enr"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // func init() {

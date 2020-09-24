@@ -45,7 +45,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/p2p/nat"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/whisper/mailserver"
 	whisper "github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/whisper/whisperv6"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/pbkdf2"
+	"golang.org/x/crypto/pbkdf2"
 )
 
 const quitCommand = "~Q"

@@ -8,8 +8,8 @@ import (
 	"net/http/httputil"
 	"strconv"
 
-	lz4 "github.com/ie310mu/ie310go/forks/github.com/cloudflare/golz4"
-	"github.com/ie310mu/ie310go/forks/github.com/gogo/protobuf/proto"
+	lz4 "github.com/cloudflare/golz4"
+	"github.com/gogo/protobuf/proto"
 )
 
 // LogStore Store the logs

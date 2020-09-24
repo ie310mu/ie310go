@@ -31,7 +31,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common/bitutil"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/crypto"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 const (

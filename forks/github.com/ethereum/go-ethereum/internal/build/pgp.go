@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/openpgp"
+	"golang.org/x/crypto/openpgp"
 )
 
 // PGPSignFile parses a PGP private key from the specified string and creates a

@@ -28,7 +28,7 @@ import (
 	"strings"
 
 	"github.com/ie310mu/ie310go/forks/github.com/rs/xhandler"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 // Options is a configuration container to setup the CORS middleware.

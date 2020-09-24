@@ -21,7 +21,7 @@ import (
 	"errors"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/storage/encryption"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 type RefEncryption struct {

@@ -25,7 +25,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common/math"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/core/types"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/params"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 var (

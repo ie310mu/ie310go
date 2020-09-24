@@ -27,7 +27,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/internal/ethapi"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 type CommandlineUI struct {

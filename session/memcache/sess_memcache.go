@@ -39,7 +39,7 @@ import (
 
 	"github.com/ie310mu/ie310go/session"
 
-	"github.com/ie310mu/ie310go/forks/github.com/bradfitz/gomemcache/memcache"
+	"github.com/bradfitz/gomemcache/memcache"
 )
 
 var mempder = &MemProvider{}

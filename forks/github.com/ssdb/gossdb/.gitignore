@@ -1,8 +1,0 @@
-*.o
-*.a
-*.class
-.DS_Store
-*.pyc
-*.swp
-*_cpy_*
-

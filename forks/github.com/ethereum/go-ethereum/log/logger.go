@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/go-stack/stack"
+	"github.com/go-stack/stack"
 )
 
 const timeKey = "t"

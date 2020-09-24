@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/ie310mu/ie310go/session"
-	"github.com/ie310mu/ie310go/forks/github.com/ssdb/gossdb/ssdb"
+	"/github.com/ssdb/gossdb/ssdb"
 )
 
 var ssdbProvider = &Provider{}

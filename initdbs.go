@@ -1,7 +1,7 @@
 package ie310go
 
 import (
-	"github.com/ie310mu/ie310go/forks/github.com/ilibs/gosql"
+	"github.com/ilibs/gosql"
 )
 
 //SetDbInfo ..

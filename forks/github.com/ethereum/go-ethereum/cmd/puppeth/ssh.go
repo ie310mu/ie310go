@@ -29,8 +29,8 @@ import (
 	"strings"
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ssh"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/crypto/ssh"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 // sshClient is a small wrapper around Go's SSH client with a few utility methods

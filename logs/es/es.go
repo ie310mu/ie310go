@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/ie310mu/ie310go/logs"
-	"github.com/ie310mu/ie310go/forks/github.com/belogik/goes"
+	"github.com/belogik/goes"
 )
 
 // NewES return a LoggerInterface

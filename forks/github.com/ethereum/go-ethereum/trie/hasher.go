@@ -22,7 +22,7 @@ import (
 
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rlp"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 type hasher struct {

@@ -28,7 +28,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/bmt"
 	ch "github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/chunk"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 const MaxPO = 16

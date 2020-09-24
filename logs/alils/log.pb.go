@@ -5,8 +5,8 @@ import (
 	"io"
 	"math"
 
-	"github.com/ie310mu/ie310go/forks/github.com/gogo/protobuf/proto"
-	github_com_gogo_protobuf_proto "github.com/ie310mu/ie310go/forks/github.com/gogo/protobuf/proto"
+	"github.com/gogo/protobuf/proto"
+	github_com_gogo_protobuf_proto "github.com/gogo/protobuf/proto"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

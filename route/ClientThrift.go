@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/apache/thrift/lib/go/thrift"
+	"github.com/apache/thrift/lib/go/thrift"
 	jsonutil "github.com/ie310mu/ie310go/common/json"
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/common/throw"

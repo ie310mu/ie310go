@@ -37,8 +37,8 @@ type SystemState struct {
 
 func genSystemStateNotiferInProcess() *SystemStateNotiferInProcess {
 	r := &SystemStateNotiferInProcess{}
-	r.chsLock = new(sync.Mutex)
-	r.chs = make(map[string]chan interface{})
+	r.ChsLock = new(sync.Mutex)
+	r.Chs = make(map[string]chan interface{})
 	return r
 }
 
@@ -76,7 +76,7 @@ func (s *SystemStateNotiferInProcess) TryRun() {
 			}
 			time.Sleep(3 * time.Second)
 			data := &SystemState{Time: convert.DateTimeWithSecToStr(time.Now()), State: "normal"}
-			s.notiferChs(data)
+			s.NotiferChs(data)
 		}
 	}()
 }

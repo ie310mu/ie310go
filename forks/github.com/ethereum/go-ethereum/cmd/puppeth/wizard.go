@@ -34,7 +34,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/core"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 // config contains all the configurations needed by puppeth that should be saved

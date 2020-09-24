@@ -25,7 +25,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/core/types"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rlp"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // Tests block header storage and retrieval operations.

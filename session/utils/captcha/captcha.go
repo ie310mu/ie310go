@@ -67,7 +67,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/astaxie/beego"
+	"/github.com/astaxie/beego"
 	"github.com/ie310mu/ie310go/cache"
 	"github.com/ie310mu/ie310go/logs"
 	"github.com/ie310mu/ie310go/session/utils"

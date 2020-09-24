@@ -6,7 +6,7 @@
 
 package notify
 
-import "github.com/ie310mu/ie310go/forks/golang.org/x/sys/unix"
+import "golang.org/x/sys/unix"
 
 // Platform independent event values.
 const (

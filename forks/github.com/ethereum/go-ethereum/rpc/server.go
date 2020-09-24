@@ -21,7 +21,7 @@ import (
 	"io"
 	"sync/atomic"
 
-	mapset "github.com/ie310mu/ie310go/forks/github.com/deckarep/golang-set"
+	mapset "github.com/deckarep/golang-set"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/log"
 )
 

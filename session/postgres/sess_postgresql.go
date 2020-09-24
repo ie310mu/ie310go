@@ -58,7 +58,7 @@ import (
 
 	"github.com/ie310mu/ie310go/session"
 	// import postgresql Driver
-	_ "github.com/ie310mu/ie310go/forks/github.com/lib/pq"
+	_ "github.com/lib/pq"
 )
 
 var postgresqlpder = &Provider{}

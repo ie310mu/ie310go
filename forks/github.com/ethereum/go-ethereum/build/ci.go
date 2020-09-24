@@ -804,7 +804,7 @@ func doAndroidArchive(cmdline []string) {
 		log.Fatal("Please ensure ANDROID_NDK points to your Android NDK")
 	}
 	// Build the Android archive and Maven resources
-	build.MustRun(goTool("get", "github.com/ie310mu/ie310go/forks/golang.org/x/mobile/cmd/gomobile", "github.com/ie310mu/ie310go/forks/golang.org/x/mobile/cmd/gobind"))
+	build.MustRun(goTool("get", "golang.org/x/mobile/cmd/gomobile", "golang.org/x/mobile/cmd/gobind"))
 	build.MustRun(gomobileTool("init", "--ndk", os.Getenv("ANDROID_NDK")))
 	build.MustRun(gomobileTool("bind", "-ldflags", "-s -w", "--target", "android", "--javapkg", "org.ethereum", "-v", "github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/mobile"))
 
@@ -925,7 +925,7 @@ func doXCodeFramework(cmdline []string) {
 	env := build.Env()
 
 	// Build the iOS XCode framework
-	build.MustRun(goTool("get", "github.com/ie310mu/ie310go/forks/golang.org/x/mobile/cmd/gomobile", "github.com/ie310mu/ie310go/forks/golang.org/x/mobile/cmd/gobind"))
+	build.MustRun(goTool("get", "golang.org/x/mobile/cmd/gomobile", "golang.org/x/mobile/cmd/gobind"))
 	build.MustRun(gomobileTool("init"))
 	bind := gomobileTool("bind", "-ldflags", "-s -w", "--target", "ios", "--tags", "ios", "-v", "github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/mobile")
 

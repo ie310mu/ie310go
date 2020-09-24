@@ -13,7 +13,7 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/ie310mu/ie310go/forks/golang.org/x/net"
+  name = "golang.org/x/net"
   packages = ["context"]
   revision = "f5dfe339be1d06f81b22525fe34671ee7d2c8904"
 

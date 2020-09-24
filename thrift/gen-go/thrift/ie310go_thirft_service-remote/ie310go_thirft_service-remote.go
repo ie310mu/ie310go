@@ -13,7 +13,7 @@ import (
         "os"
         "strconv"
         "strings"
-        "github.com/ie310mu/ie310go/forks/github.com/apache/thrift/lib/go/thrift"
+        "/github.com/apache/thrift/lib/go/thrift"
         "thrift"
 )
 

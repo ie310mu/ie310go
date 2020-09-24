@@ -6,8 +6,8 @@ import (
 
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/logs"
-	"github.com/ie310mu/ie310go/forks/github.com/ilibs/gosql"
-	"github.com/ie310mu/ie310go/forks/github.com/jmoiron/sqlx"
+	"github.com/ilibs/gosql"
+	"github.com/jmoiron/sqlx"
 )
 
 func TestXXX(t *testing.T) {

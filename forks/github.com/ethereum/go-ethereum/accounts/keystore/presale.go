@@ -28,7 +28,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/accounts"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/crypto"
 	"github.com/ie310mu/ie310go/forks/github.com/pborman/uuid"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/pbkdf2"
+	"golang.org/x/crypto/pbkdf2"
 )
 
 // creates a Key and stores that in the given KeyStore by decrypting a presale key JSON

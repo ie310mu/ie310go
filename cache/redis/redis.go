@@ -36,7 +36,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ie310mu/ie310go/forks/github.com/gomodule/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 
 	"github.com/ie310mu/ie310go/cache"
 	"strings"

@@ -26,7 +26,7 @@ import (
 	"bazil.org/fuse"
 	"bazil.org/fuse/fs"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/swarm/log"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/context"
+	"golang.org/x/net/context"
 )
 
 var (

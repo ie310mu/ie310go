@@ -13,7 +13,7 @@ import (
 	"syscall"
 
 	"github.com/ie310mu/ie310go/forks/github.com/pkg/errors"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/sys/windows"
+	"golang.org/x/sys/windows"
 )
 
 // Cache of privilege names to LUIDs.

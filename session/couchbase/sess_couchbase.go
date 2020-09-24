@@ -38,7 +38,7 @@ import (
 	"sync"
 
 	"github.com/ie310mu/ie310go/session"
-	couchbase "github.com/ie310mu/ie310go/forks/github.com/couchbase/go-couchbase"
+	couchbase "github.com/couchbase/go-couchbase"
 )
 
 var couchbpder = &Provider{}

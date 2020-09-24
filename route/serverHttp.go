@@ -252,10 +252,23 @@ type RequestResponseHTTP struct {
 	convertResult     bool   //是否转换最终结果为json字符串，为否时直接toString()  默认true，主要用于需要接口直接返回字符串而不加引号时设置为false
 	packageResult     bool   //是否将结果用JsonServiceResult封装
 	CustomContentType string //由上层调用者自定义接口的返回数据类型
+	form              map[string]interface{}
+}
+
+func (rs *RequestResponseHTTP) SetArgValue(key string, value string) {
+	if rs.form == nil {
+		rs.form = make(map[string]interface{})
+	}
+	rs.form[key] = value //不写到http.Request的Form中，内部机制不明确
 }
 
 //GetStringFromForm 从Form中获取一个字符串
 func (rs *RequestResponseHTTP) GetStringFromForm(paramName string) string {
+	v, ok := rs.form[paramName]
+	if ok {
+		return fmt.Sprintf("%v", v)
+	}
+
 	//logsagent.Info(jsonutil.ToJSON(rs.r.Form))
 	vs := rs.r.Form[paramName]
 	if vs == nil || len(vs) == 0 || vs[0] == "" {

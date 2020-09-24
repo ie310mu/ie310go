@@ -15,7 +15,7 @@
 package memcache
 
 import (
-	_ "github.com/ie310mu/ie310go/forks/github.com/bradfitz/gomemcache/memcache"
+	_ "github.com/bradfitz/gomemcache/memcache"
 
 	"strconv"
 	"testing"

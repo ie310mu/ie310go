@@ -18,9 +18,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/internal/gen"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/language"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/text/unicode/cldr"
+	"golang.org/x/text/internal/gen"
+	"golang.org/x/text/language"
+	"golang.org/x/text/unicode/cldr"
 )
 
 var (

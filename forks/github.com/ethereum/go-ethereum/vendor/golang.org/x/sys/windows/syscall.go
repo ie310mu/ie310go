@@ -22,7 +22,7 @@
 // These calls return err == nil to indicate success; otherwise
 // err represents an operating system error describing the failure and
 // holds a value of type syscall.Errno.
-package windows // import "github.com/ie310mu/ie310go/forks/golang.org/x/sys/windows"
+package windows // import "golang.org/x/sys/windows"
 
 import (
 	"syscall"

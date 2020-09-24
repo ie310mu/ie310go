@@ -48,7 +48,7 @@ import (
 
 	"github.com/ie310mu/ie310go/session"
 	// import mysql driver
-	_ "github.com/ie310mu/ie310go/forks/github.com/go-sql-driver/mysql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var (

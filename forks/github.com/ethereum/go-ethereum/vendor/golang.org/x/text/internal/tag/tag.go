@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 // Package tag contains functionality handling tags and related data.
-package tag // import "github.com/ie310mu/ie310go/forks/golang.org/x/text/internal/tag"
+package tag // import "golang.org/x/text/internal/tag"
 
 import "sort"
 

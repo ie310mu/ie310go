@@ -35,7 +35,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/p2p/simulations/adapters"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rpc"
 	"github.com/ie310mu/ie310go/forks/github.com/julienschmidt/httprouter"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/net/websocket"
+	"golang.org/x/net/websocket"
 )
 
 // DefaultClient is the default simulation API client which expects the API

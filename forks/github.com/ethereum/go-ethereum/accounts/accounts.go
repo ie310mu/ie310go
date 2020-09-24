@@ -25,7 +25,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/core/types"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/event"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 // Account represents an Ethereum account located at a specific location defined

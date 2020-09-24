@@ -51,3 +51,10 @@ func Stop() {
 }
 
 type appInitFunc func()
+
+//http://127.0.0.1:8003/fengwoService.goss?m=RedirectTest
+// func (s xxxxService) RedirectTest(args *route.ServiceArgs) string {
+// 	rs := args.GetRs().(*route.RequestResponseHTTP)
+// 	http.Redirect(rs.GetW(), rs.GetR(), "http://www.baidu.com", 301)
+// 	return "0"
+// }

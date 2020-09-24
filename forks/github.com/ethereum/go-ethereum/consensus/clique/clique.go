@@ -40,7 +40,7 @@ import (
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rlp"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/rpc"
 	lru "github.com/ie310mu/ie310go/forks/github.com/hashicorp/golang-lru"
-	"github.com/ie310mu/ie310go/forks/golang.org/x/crypto/sha3"
+	"golang.org/x/crypto/sha3"
 )
 
 const (

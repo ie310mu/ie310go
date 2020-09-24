@@ -24,7 +24,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	mapset "github.com/ie310mu/ie310go/forks/github.com/deckarep/golang-set"
+	mapset "github.com/deckarep/golang-set"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/common"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/consensus"
 	"github.com/ie310mu/ie310go/forks/github.com/ethereum/go-ethereum/consensus/misc"

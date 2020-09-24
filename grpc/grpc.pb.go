@@ -6,10 +6,10 @@ package grpc
 import (
 	context "context"
 	fmt "fmt"
-	proto "github.com/ie310mu/ie310go/forks/github.com/golang/protobuf/proto"
-	grpc "github.com/ie310mu/ie310go/forks/google.golang.org/grpc"
-	codes "github.com/ie310mu/ie310go/forks/google.golang.org/grpc/codes"
-	status "github.com/ie310mu/ie310go/forks/google.golang.org/grpc/status"
+	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -131,7 +131,7 @@ const _ = grpc.SupportPackageIsVersion4
 
 // Ie310GoServcieClient is the client API for Ie310GoServcie service.
 //
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/github.com/ie310mu/ie310go/forks/google.golang.org/grpc#ClientConn.NewStream.
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type Ie310GoServcieClient interface {
 	Invoke(ctx context.Context, in *GrpcRequest, opts ...grpc.CallOption) (*GrpcResponse, error)
 }

@@ -22,11 +22,11 @@ import (
 
 	"database/sql"
 
+	_ "github.com/go-sql-driver/mysql" //导入mysql驱动
 	"github.com/ie310mu/ie310go/common/json"
 	"github.com/ie310mu/ie310go/common/logsagent"
 	"github.com/ie310mu/ie310go/common/obj"
 	"github.com/ie310mu/ie310go/common/throw"
-	_ "github.com/go-sql-driver/mysql" //导入mysql驱动
 	"github.com/ilibs/gosql"
 	"github.com/jmoiron/sqlx"
 )
@@ -354,5 +354,5 @@ func (m *BaseMapper) CheckArgs(args ...interface{}) []interface{} {
 		}
 	}
 
-	return newArgs
+	return newArgs1
 }
